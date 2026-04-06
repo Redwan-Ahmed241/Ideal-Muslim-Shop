@@ -43,8 +43,17 @@ export default function Navbar() {
             <nav className="flex items-center justify-between px-6 py-4 mx-auto max-w-7xl lg:px-8">
                 {/* ── Logo ── */}
                 <Link to="/" className="flex items-center gap-2 group">
-                    <div className="grid w-10 h-10 text-lg font-bold text-white rounded-xl bg-gradient-to-br from-primary-500 to-primary-700 place-items-center group-hover:scale-105 transition-transform">☪ </div>
-                    <span className="text-xl font-bold font-[family-name:var(--font-heading)] text-surface-900">
+                    <img 
+                        src="/logo.svg" 
+                        alt="Ideal Muslim Shop Logo" 
+                        className="h-10 w-auto group-hover:scale-105 transition-transform"
+                        onError={(e) => {
+                            // Fallback if logo.svg fails (maybe they used .png)
+                            e.target.onerror = null; 
+                            e.target.src = "/1000263973.png";
+                        }}
+                    />
+                    <span className="text-xl font-bold font-[family-name:var(--font-heading)] text-surface-900 hidden sm:block">
                         <span className="text-primary-500">Ideal Muslim Shop</span>
                     </span>
                 </Link>

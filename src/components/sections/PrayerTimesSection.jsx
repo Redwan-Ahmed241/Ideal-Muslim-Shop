@@ -16,7 +16,8 @@ const PRAYER_ICONS = {
     Fajr: '🌅',
     Sunrise: '☀️',
     Dhuhr: '🌞',
-    Asr: '🌤️',
+    'Asr (Shafi)': '🌤️',
+    'Asr (Hanafi)': '🌤️',
     Maghrib: '🌇',
     Isha: '🌙',
 };
@@ -24,7 +25,7 @@ const PRAYER_ICONS = {
 // ── Ordered array guarantees prayer display order ──
 // Using Object.entries() doesn't guarantee order in all JS engines.
 // This array + O(1) object lookup = correct order + fast access.
-const PRAYER_ORDER = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
+const PRAYER_ORDER = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr (Shafi)', 'Asr (Hanafi)', 'Maghrib', 'Isha'];
 
 export default function PrayerTimesSection() {
     const [times, setTimes] = useState(null);
@@ -77,7 +78,7 @@ export default function PrayerTimesSection() {
                         </div>
 
                         {/* Prayer cards grid — ordered by PRAYER_ORDER array */}
-                        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
+                        <div className="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-7">
                             {times.prayers &&
                                 PRAYER_ORDER
                                     .filter((name) => times.prayers[name] !== undefined)

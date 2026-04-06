@@ -1,45 +1,34 @@
-/**
- * Daily Ayah & Dua Section
- *
- * ⚠️ IMPORTANT — INCOMPLETE BY DESIGN ⚠️
- * This component renders the UI shell for the "Daily Ayah & Dua" widget.
- * The auto-refresh logic (fetching a new ayah/dua daily) is intentionally
- * left as a TODO for the developer to implement.
- *
- * Implementation guidance:
- * ────────────────────────
- * 1. Backend: Complete the GET /api/daily-ayah endpoint in
- *    DailyAyahController.php. You could:
- *    a) Store ayahs in a database table and rotate via a scheduled command
- *    b) Call an external API (e.g., alquran.cloud) and cache the result
- *    c) Use a simple JSON seed file and pick one per day based on day-of-year
- *
- * 2. Frontend: Replace the hardcoded `ayah` state below with an API call:
- *    ```js
- *    useEffect(() => {
- *      api.get('/daily-ayah')
- *        .then(res => setAyah(res.data))
- *        .catch(console.error);
- *    }, []);
- *    ```
- *
- * 3. (Optional) Add a "refresh" button that fetches a random ayah.
- *
- * 4. (Optional) Add loading and error states.
- */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { BookOpen, RefreshCw } from 'lucide-react';
 import SectionHeader from '../ui/SectionHeader';
+import api from '../../lib/api';
 
 export default function DailyAyahSection() {
-    // TODO: Replace with API call — see guidance in the file header
-    const [ayah] = useState({
+    const [ayah, setAyah] = useState({
         arabic: 'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ',
-        translation:
-            'In the name of Allah, the Most Gracious, the Most Merciful.',
+        translation: 'In the name of Allah, the Most Gracious, the Most Merciful.',
         reference: 'Surah Al-Fatiha (1:1)',
         dua: 'O Allah, open for me the doors of Your mercy.',
     });
+    const [loading, setLoading] = useState(true);
+
+    const fetchDailyAyah = async () => {
+        try {
+            setLoading(true);
+            const { data } = await api.get('/daily-ayah');
+            if (data.data) {
+                setAyah(data.data);
+            }
+        } catch (error) {
+            console.error('Failed to fetch Daily Ayah:', error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        fetchDailyAyah();
+    }, []);
 
     return (
         <section id="ayah" className="relative py-24 overflow-hidden bg-gradient-to-b from-primary-900 to-primary-800">
@@ -55,14 +44,22 @@ export default function DailyAyahSection() {
                 />
 
                 {/* Ayah Card */}
-                <div className="p-8 mt-8 bg-white/10 backdrop-blur-xl rounded-3xl border border-white/10 md:p-12">
-                    <div className="flex items-center gap-3 mb-8">
-                        <div className="grid w-12 h-12 rounded-2xl bg-accent-400/20 place-items-center">
-                            <BookOpen size={22} className="text-accent-400" />
+                <div className="relative p-8 mt-8 bg-white/10 backdrop-blur-xl rounded-3xl border border-white/10 md:p-12">
+                    {loading && (
+                        <div className="absolute inset-0 grid bg-primary-900/50 backdrop-blur-sm place-items-center rounded-3xl z-20">
+                            <RefreshCw className="w-8 h-8 text-white animate-spin" />
                         </div>
-                        <div>
-                            <h3 className="font-semibold text-white">Quran Verse</h3>
-                            <p className="text-sm text-primary-200">{ayah.reference}</p>
+                    )}
+
+                    <div className="flex items-center justify-between gap-3 mb-8">
+                        <div className="flex items-center gap-3">
+                            <div className="grid w-12 h-12 rounded-2xl bg-accent-400/20 place-items-center">
+                                <BookOpen size={22} className="text-accent-400" />
+                            </div>
+                            <div>
+                                <h3 className="font-semibold text-white">Quran Verse</h3>
+                                <p className="text-sm text-primary-200">{ayah.reference}</p>
+                            </div>
                         </div>
                     </div>
 
@@ -85,11 +82,6 @@ export default function DailyAyahSection() {
                             {ayah.dua}
                         </p>
                     </div>
-
-                    {/* TODO: Add refresh button once API is connected
-                        Create a button with onClick that calls api.get('/daily-ayah')
-                        and updates the ayah state. See file header for details.
-                    */}
                 </div>
             </div>
         </section >

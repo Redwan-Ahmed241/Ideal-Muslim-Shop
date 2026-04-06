@@ -42,9 +42,15 @@ export default function Footer() {
                     {/* Brand */}
                     <div>
                         <Link to="/" className="flex items-center gap-2 mb-4">
-                            <div className="grid w-10 h-10 text-lg font-bold text-white rounded-xl bg-gradient-to-br from-primary-500 to-primary-700 place-items-center">
-                                ☪
-                            </div>
+                            <img 
+                                src="/logo.svg" 
+                                alt="Ideal Muslim Shop Logo" 
+                                className="h-10 w-auto"
+                                onError={(e) => {
+                                    e.target.onerror = null; 
+                                    e.target.src = "/1000263973.png";
+                                }}
+                            />
                             <span className="text-xl font-bold text-white font-[family-name:var(--font-heading)]">
                                 Ideal Muslim <span className="text-primary-400">Shop</span>
                             </span>
