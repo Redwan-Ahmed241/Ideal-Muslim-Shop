@@ -11,6 +11,7 @@ import { useEffect, useState, useCallback } from 'react';
 import { ShoppingBag, Filter, Loader2, Search } from 'lucide-react';
 import api from '../lib/api';
 import useDebounce from '../hooks/useDebounce';
+import { useCart } from '../context/CartContext';
 import SectionHeader from '../components/ui/SectionHeader';
 import Card from '../components/ui/Card';
 
@@ -21,6 +22,8 @@ export default function ShopPage() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [searchQuery, setSearchQuery] = useState('');
+    
+    const { addToCart } = useCart();
 
     // ── Debounce: waits 400ms after user stops typing before firing API call ──
     // Without this: "islamic book" = 12 API calls
@@ -168,7 +171,13 @@ export default function ShopPage() {
                                         <span className="text-lg font-bold text-primary-600">
                                             ${parseFloat(product.price).toFixed(2)}
                                         </span>
-                                        <button className="p-2 transition-colors rounded-full text-surface-400 hover:text-white hover:bg-primary-500">
+                                        <button 
+                                            onClick={() => {
+                                                addToCart(product);
+                                                alert('Added to cart!');
+                                            }}
+                                            className="p-2 transition-colors rounded-full text-surface-400 hover:text-white hover:bg-primary-500"
+                                        >
                                             <ShoppingBag size={16} />
                                         </button>
                                     </div>

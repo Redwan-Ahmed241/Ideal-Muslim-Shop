@@ -9,6 +9,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Moon, ShoppingBag } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
+import { useCart } from '../../context/CartContext';
 import Button from '../ui/Button';
 
 const NAV_LINKS = [
@@ -22,6 +23,7 @@ export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
     const { user, logout } = useAuth();
+    const { totalItems } = useCart();
     const location = useLocation();
 
     useEffect(() => {
@@ -53,7 +55,7 @@ export default function Navbar() {
                             e.target.src = "/1000263973.png";
                         }}
                     />
-                    <span className="text-xl font-bold font-[family-name:var(--font-heading)] text-surface-900 hidden sm:block">
+                    <span className="hidden text-xl font-bold font-[family-name:var(--font-heading)] text-surface-900 sm:block">
                         <span className="text-primary-500">Ideal Muslim Shop</span>
                     </span>
                 </Link>
@@ -77,9 +79,14 @@ export default function Navbar() {
 
                 {/* ── Actions ── */}
                 <div className="items-center hidden gap-3 md:flex">
-                    <button className="p-2 transition-colors rounded-full text-surface-500 hover:text-primary-600 hover:bg-primary-50">
+                    <Link to="/cart" className="relative p-2 transition-colors rounded-full text-surface-500 hover:text-primary-600 hover:bg-primary-50">
                         <ShoppingBag size={20} />
-                    </button>
+                        {totalItems > 0 && (
+                            <span className="absolute top-0 right-0 grid w-4 h-4 text-[10px] font-bold text-white rounded-full bg-primary-500 place-items-center tracking-tighter shadow-sm border border-white">
+                                {totalItems}
+                            </span>
+                        )}
+                    </Link>
                     {user ? (
                         <div className="flex items-center gap-3">
                             <span className="text-sm font-medium text-surface-700">{user.name}</span>

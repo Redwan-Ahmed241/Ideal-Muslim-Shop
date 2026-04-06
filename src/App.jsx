@@ -9,6 +9,7 @@
  */
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
+import { CartProvider } from './context/CartContext';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 
@@ -19,6 +20,8 @@ import ArticlesPage from './pages/ArticlesPage';
 import ArticleDetailPage from './pages/ArticleDetailPage';
 import LoginPage from './pages/LoginPage';
 import CommunityPage from './pages/CommunityPage';
+import CartPage from './pages/CartPage';
+import CheckoutPage from './pages/CheckoutPage';
 
 function Layout() {
   const location = useLocation();
@@ -32,6 +35,8 @@ function Layout() {
         <Route path="/shop" element={<ShopPage />} />
         <Route path="/articles" element={<ArticlesPage />} />
         <Route path="/articles/:id" element={<ArticleDetailPage />} />
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/community" element={<CommunityPage />} />
       </Routes>
@@ -44,7 +49,9 @@ export default function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
-        <Layout />
+        <CartProvider>
+          <Layout />
+        </CartProvider>
       </AuthProvider>
     </BrowserRouter>
   );
