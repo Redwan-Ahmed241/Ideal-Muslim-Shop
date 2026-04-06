@@ -38,11 +38,8 @@ export default function CheckoutPage() {
                 payment_method: 'cash_on_delivery'
             };
 
-            // TODO: backend route
-            // await api.post('/orders', orderData);
-            
-            // Temporary simulation for now until backend is ready
-            await new Promise(resolve => setTimeout(resolve, 1500));
+            // Call the real backend API route we just created
+            await api.post('/orders', orderData);
             
             setSuccess(true);
             clearCart();
