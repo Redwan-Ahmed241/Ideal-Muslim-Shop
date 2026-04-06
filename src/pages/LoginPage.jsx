@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { LogIn, UserPlus, Eye, EyeOff, Loader2 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import Button from '../components/ui/Button';
+import BrandLogo from '../components/ui/BrandLogo';
 
 export default function LoginPage() {
     const [isRegister, setIsRegister] = useState(false);
@@ -74,8 +75,12 @@ export default function LoginPage() {
                 {/* Card */}
                 <div className="p-8 bg-white shadow-2xl rounded-3xl md:p-10">
                     <div className="mb-8 text-center">
-                        <div className="grid w-16 h-16 mx-auto mb-4 text-2xl font-bold text-white rounded-2xl bg-gradient-to-br from-primary-500 to-primary-700 place-items-center">
-                            ☪
+                        <div className="w-16 h-16 mx-auto mb-4">
+                            <BrandLogo
+                                showText={false}
+                                logoClassName="w-full h-full object-contain"
+                                className="w-full h-full"
+                            />
                         </div>
                         <h1 className="text-2xl font-bold text-surface-900 font-[family-name:var(--font-heading)]">
                             {isRegister ? 'Create Account' : 'Welcome Back'}

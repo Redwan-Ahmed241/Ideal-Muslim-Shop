@@ -11,6 +11,7 @@ import { Menu, X, Moon, ShoppingBag } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useCart } from '../../context/CartContext';
 import Button from '../ui/Button';
+import BrandLogo from '../ui/BrandLogo';
 
 const NAV_LINKS = [
     { label: 'Home', path: '/' },
@@ -45,19 +46,11 @@ export default function Navbar() {
             <nav className="flex items-center justify-between px-6 py-4 mx-auto max-w-7xl lg:px-8">
                 {/* ── Logo ── */}
                 <Link to="/" className="flex items-center gap-2 group">
-                    <img 
-                        src="/logo.svg" 
-                        alt="Ideal Muslim Shop Logo" 
-                        className="h-10 w-auto group-hover:scale-105 transition-transform"
-                        onError={(e) => {
-                            // Fallback if logo.svg fails (maybe they used .png)
-                            e.target.onerror = null; 
-                            e.target.src = "/1000263973.png";
-                        }}
+                    <BrandLogo
+                        logoClassName="h-10 w-auto group-hover:scale-105 transition-transform"
+                        textClassName="hidden text-xl font-bold font-[family-name:var(--font-heading)] text-surface-900 sm:block"
+                        className="flex items-center gap-2"
                     />
-                    <span className="hidden text-xl font-bold font-[family-name:var(--font-heading)] text-surface-900 sm:block">
-                        <span className="text-primary-500">Ideal Muslim Shop</span>
-                    </span>
                 </Link>
 
                 {/* ── Desktop Links ── */}

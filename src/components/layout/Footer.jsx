@@ -4,6 +4,7 @@
  */
 import { Link } from 'react-router-dom';
 import { Heart } from 'lucide-react';
+import BrandLogo from '../ui/BrandLogo';
 
 const COLUMNS = [
     {
@@ -42,18 +43,12 @@ export default function Footer() {
                     {/* Brand */}
                     <div>
                         <Link to="/" className="flex items-center gap-2 mb-4">
-                            <img 
-                                src="/logo.svg" 
-                                alt="Ideal Muslim Shop Logo" 
-                                className="h-10 w-auto"
-                                onError={(e) => {
-                                    e.target.onerror = null; 
-                                    e.target.src = "/1000263973.png";
-                                }}
+                            <BrandLogo
+                                logoClassName="h-10 w-auto"
+                                textClassName="text-xl font-bold text-white font-[family-name:var(--font-heading)]"
+                                highlightClassName="text-primary-400"
+                                className="flex items-center gap-2"
                             />
-                            <span className="text-xl font-bold text-white font-[family-name:var(--font-heading)]">
-                                Ideal Muslim <span className="text-primary-400">Shop</span>
-                            </span>
                         </Link>
                         <p className="text-sm leading-relaxed text-surface-400">
                             Your gateway to an enriched Islamic lifestyle. Shop, learn, pray, and connect.
