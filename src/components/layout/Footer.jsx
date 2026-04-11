@@ -13,7 +13,7 @@ const COLUMNS = [
             { label: 'Home', href: '/' },
             { label: 'Shop', href: '/shop' },
             { label: 'Dawah', href: '/articles' },
-            { label: 'Community', href: '/community' },
+            { label: 'Blood Donation', href: '/community' },
         ],
     },
     {

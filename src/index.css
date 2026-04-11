@@ -3,44 +3,45 @@
 /* ===================================================================
  * Ideal Muslim Shop — Islamic Lifestyle Platform
  * Design System & Custom Tokens
+ * Deep Blue Theme — Inspired by Logo Palette
  * =================================================================== */
 
 @theme {
-  /* Primary: Deep Teal / Islamic Green */
-  --color-primary-50: #e6f5f0;
-  --color-primary-100: #b3e0d1;
-  --color-primary-200: #80ccb3;
-  --color-primary-300: #4db894;
-  --color-primary-400: #26a87d;
-  --color-primary-500: #0d9668;
-  --color-primary-600: #0b7a55;
-  --color-primary-700: #085f42;
-  --color-primary-800: #064530;
-  --color-primary-900: #032b1e;
+  /* Primary: Deep Blue / Navy */
+  --color-primary-50: #e8eef6;
+  --color-primary-100: #c5d5ea;
+  --color-primary-200: #9fb9dc;
+  --color-primary-300: #799dce;
+  --color-primary-400: #5c88c4;
+  --color-primary-500: #1e5aa8;
+  --color-primary-600: #174a8e;
+  --color-primary-700: #0f3a74;
+  --color-primary-800: #0a2540;
+  --color-primary-900: #061a2e;
 
-  /* Accent: Warm Gold */
-  --color-accent-50: #fef9e7;
-  --color-accent-100: #fcedb5;
-  --color-accent-200: #fae183;
-  --color-accent-300: #f8d551;
-  --color-accent-400: #f6cc2f;
-  --color-accent-500: #f4c430;
-  --color-accent-600: #c49a26;
-  --color-accent-700: #94711c;
-  --color-accent-800: #644912;
-  --color-accent-900: #342108;
+  /* Accent: Silver / Cool White */
+  --color-accent-50: #f8f9fc;
+  --color-accent-100: #eef1f7;
+  --color-accent-200: #dde4ef;
+  --color-accent-300: #c5cfe0;
+  --color-accent-400: #a8b8d1;
+  --color-accent-500: #8a9fbf;
+  --color-accent-600: #6b82a6;
+  --color-accent-700: #4f6589;
+  --color-accent-800: #364a66;
+  --color-accent-900: #1f2f43;
 
   /* Surface / Neutral */
-  --color-surface-50: #f8faf9;
-  --color-surface-100: #f0f4f2;
-  --color-surface-200: #e2e8e5;
-  --color-surface-300: #c4d0ca;
-  --color-surface-400: #97a89f;
-  --color-surface-500: #6b8075;
-  --color-surface-600: #4a5d52;
-  --color-surface-700: #344239;
-  --color-surface-800: #1e2b23;
-  --color-surface-900: #0f1612;
+  --color-surface-50: #f7f8fa;
+  --color-surface-100: #eef0f4;
+  --color-surface-200: #dde1e8;
+  --color-surface-300: #c0c7d2;
+  --color-surface-400: #8e99a9;
+  --color-surface-500: #636e80;
+  --color-surface-600: #475264;
+  --color-surface-700: #313a49;
+  --color-surface-800: #1c2330;
+  --color-surface-900: #0e1218;
 
   /* Font Family */
   --font-heading: 'Outfit', sans-serif;
@@ -121,14 +122,14 @@
 /* ---- Utility Helpers ---- */
 @layer utilities {
   .text-gradient-primary {
-    background: linear-gradient(135deg, var(--color-primary-500), var(--color-primary-700));
+    background: linear-gradient(135deg, var(--color-primary-500), var(--color-primary-800));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  .text-gradient-gold {
-    background: linear-gradient(135deg, var(--color-accent-400), var(--color-accent-600));
+  .text-gradient-silver {
+    background: linear-gradient(135deg, var(--color-accent-200), var(--color-accent-400));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -142,7 +143,7 @@
   }
 
   .card-shadow {
-    box-shadow: 0 4px 24px rgba(13, 150, 104, 0.08),
+    box-shadow: 0 4px 24px rgba(10, 37, 64, 0.08),
       0 1px 4px rgba(0, 0, 0, 0.04);
   }
 
@@ -152,11 +153,11 @@
 
   .card-hover:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(13, 150, 104, 0.14),
+    box-shadow: 0 12px 32px rgba(10, 37, 64, 0.14),
       0 4px 8px rgba(0, 0, 0, 0.06);
   }
 
   .islamic-pattern {
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230d9668' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231e5aa8' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   }
 }

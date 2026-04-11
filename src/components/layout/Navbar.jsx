@@ -17,7 +17,7 @@ const NAV_LINKS = [
     { label: 'Home', path: '/' },
     { label: 'Shop', path: '/shop' },
     { label: 'Dawah', path: '/articles' },
-    { label: 'Community', path: '/community' },
+    { label: 'Blood Donation', path: '/community' },
 ];
 
 export default function Navbar() {
