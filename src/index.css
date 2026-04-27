@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 /* ===================================================================
- * Ideal Muslim Shop — Islamic Lifestyle Platform
+ * Ideal Muslim Shop — Islamic Lifestyle E-Commerce Platform
  * Design System & Custom Tokens
- * Deep Blue Theme — Inspired by Logo Palette
+ * Emerald Green Theme — Matching new landing page design
  * =================================================================== */
 
 @theme {
-  /* Primary: Deep Blue / Navy */
+  /* Primary: Deep Blue / Navy (kept for backwards compat) */
   --color-primary-50: #e8eef6;
   --color-primary-100: #c5d5ea;
   --color-primary-200: #9fb9dc;
@@ -93,6 +93,15 @@
   }
 }
 
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
 /* ---- Base Styles ---- */
 @layer base {
   html {
@@ -102,7 +111,7 @@
   body {
     font-family: var(--font-body);
     color: var(--color-surface-800);
-    background-color: var(--color-surface-50);
+    background-color: #ffffff;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -160,4 +169,39 @@
   .islamic-pattern {
     background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231e5aa8' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   }
+
+  /* Hide scrollbar for product carousels */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Loading shimmer effect */
+  .shimmer {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+}
+
+/* ---- Swiper custom styles ---- */
+.swiper-pagination {
+  bottom: 16px !important;
+}
+
+.swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.5) !important;
+  width: 10px !important;
+  height: 10px !important;
+  opacity: 1 !important;
+  transition: all 0.3s !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: #10b981 !important;
+  width: 28px !important;
+  border-radius: 5px !important;
 }

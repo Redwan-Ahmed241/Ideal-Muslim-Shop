@@ -6,7 +6,7 @@ export default function BrandLogo({
     showText = true,
     logoClassName = 'h-10 w-auto',
     textClassName = 'text-xl font-bold font-[family-name:var(--font-heading)]',
-    highlightClassName = 'text-primary-500',
+    highlightClassName = 'text-emerald-600',
     className = 'flex items-center gap-2',
 }) {
     return (
