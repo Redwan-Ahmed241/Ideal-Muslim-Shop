@@ -14,7 +14,6 @@ import BrandLogo from '../ui/BrandLogo';
 
 const NAV_LINKS = [
     { key: 'home', path: '/' },
-    { key: 'about', path: '/about' },
     { key: 'shopCollections', path: '/shop', highlight: true },
     { key: 'dawah', path: '/community', accent: true },
     { key: 'community', path: '/community' },
